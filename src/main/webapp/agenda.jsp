@@ -11,7 +11,7 @@
 <body>
 
 	<h1> Agenda de Contatos </h1>
-	<a href="#" class="Botao1">Novo contatos</a>
+	<a href="novo.html" class="Botao1">Novo contatos</a>
 
 </body>
 </html>
