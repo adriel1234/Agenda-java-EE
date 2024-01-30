@@ -16,9 +16,8 @@ public class JavaBeans {
 		this.idcon = idcon;
 		this.nome = nome;
 		this.fone = fone;
-		this.email = email;
+		this.email = email; 
 	}
-
 
 	public String getIdcon() {
 		return idcon;
