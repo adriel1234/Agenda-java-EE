@@ -18,7 +18,7 @@ function validar(){
 		formContato.fone.focus();
 		return false;
 	}else{
-		documet.forms["formContato"].submit();
+		document.forms["formContato"].submit();
 	}
 	
 }
