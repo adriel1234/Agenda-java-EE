@@ -2,13 +2,14 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import model.DAO;
 import model.JavaBeans;
 
@@ -49,15 +50,21 @@ public class Controller extends HttpServlet {
 		
 		ArrayList<JavaBeans> lista = dao.listarContatos();
 		
+		//Encaminha a lista ao documento agenda.jsp
+		
+		request.setAttribute("contatos", lista);
+		RequestDispatcher rd = request.getRequestDispatcher("agenda.jsp");
+		rd.forward(request, response);
+		
 		//teste de recebimento da lista
 		
-		for (int i = 0; i<lista.size();i++) {
-			System.out.println(lista.get(i).getIdcon());
-			System.out.println(lista.get(i).getNome());
-			System.out.println(lista.get(i).getFone());
-			System.out.println(lista.get(i).getEmail());
-			
-		}
+//		for (int i = 0; i<lista.size();i++) {
+//			System.out.println(lista.get(i).getIdcon());
+//			System.out.println(lista.get(i).getNome());
+//			System.out.println(lista.get(i).getFone());
+//			System.out.println(lista.get(i).getEmail());
+//			
+//		}
 	}
 	
 	//Novov contato
