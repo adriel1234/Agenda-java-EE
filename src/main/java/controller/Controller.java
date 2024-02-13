@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.DAO;
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main","/insert","/select","/update"})
+@WebServlet(urlPatterns = { "/Controller", "/main","/insert","/select","/update","/delete"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
@@ -40,6 +40,8 @@ public class Controller extends HttpServlet {
 		}else if(action.equals("/update")) {
 			editarContato(request,response);
 			
+		}else if(action.equals("/delete")) {
+			removerContato(request,response);
 		}else {
 			response.sendRedirect("index.html");
 		}
@@ -140,5 +142,20 @@ public class Controller extends HttpServlet {
 		//redirecionar para o documento agenda.jsp (atualiozando as alterações)
 		response.sendRedirect("main");
 		
+	}
+	
+	//Remover Contato
+	protected void removerContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//recebimento do id do contato a ser excluido (confirmador.js)
+		String idcon = request.getParameter("idcon");
+		//setar a variavel idcon JavaBeans
+		contato.setIdcon(idcon);
+		
+		//executar o método deletarContato(DAO) passando o objjeto contato
+		dao.deletarContato(contato);
+
+		// redirecionar para o documento agenda.jsp (atualiozando as alterações)
+		response.sendRedirect("main");
 	}
 }
