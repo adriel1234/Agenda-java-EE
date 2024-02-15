@@ -7,19 +7,30 @@ import java.util.ArrayList;
 
 import com.mysql.jdbc.PreparedStatement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DAO.
+ */
 public class DAO {
 
-	/** Modulo conexão **/
-
-	// parametros de conexao
-
+	/** The driver. */
 	private String driver = "com.mysql.jdbc.Driver";
+	
+	/** The url. */
 	private String url = "jdbc:mysql://localhost:3306/dbagenda?useTimezone=true&serverTimezone=UTC";
+	
+	/** The user. */
 	private String user = "root";
+	
+	/** The password. */
 	private String password = "root";
 
-	// Método url
 
+	/**
+	 * Conectar.
+	 *
+	 * @return the connection
+	 */
 	private Connection conectar() {
 		Connection con = null;
 
@@ -35,8 +46,11 @@ public class DAO {
 		}
 	}
 
-	/** CRUD CREATE **/
-
+	/**
+	 * Inserir contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void inserirContato(JavaBeans contato) {
 		String create = "insert into contatos (nome,fone,email) values(?,?,?)";
 
@@ -65,8 +79,11 @@ public class DAO {
 
 	}
 
-	/** CRUD READ **/
-
+	/**
+	 * Listar contatos.
+	 *
+	 * @return the array list
+	 */
 	public ArrayList<JavaBeans> listarContatos() {
 		// criando um objeto para acessar a classe JavaBeans
 		ArrayList<JavaBeans> contatos = new ArrayList<>();
@@ -101,9 +118,12 @@ public class DAO {
 		}
 
 	}
-	
-	/** CRUD UPDATE **/
-	
+
+	/**
+	 * Selecionar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void selecionarContato(JavaBeans contato) {
 		String read2 = "select * from contatos where idcon = ?";
 		
@@ -128,8 +148,11 @@ public class DAO {
 		
 	}
 	
-/** CRUD UPDATE **/
-	
+	/**
+	 * Editar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void editarContato(JavaBeans contato) {
 		String read2 = "select * from contatos where idcon = ?";
 		
@@ -154,8 +177,11 @@ public class DAO {
 		
 	}
 	
-	//editar contato
-	
+	/**
+	 * Alterar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void alterarContato(JavaBeans contato) {
 		String update = "update contatos set nome=?,fone=?,email=? where idcon=?";
 		
@@ -176,7 +202,11 @@ public class DAO {
 		}
 	}
 	
-	/** CRUD DELETE **/
+	/**
+	 * Deletar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void deletarContato(JavaBeans contato) {
 		String delete = "delete from contatos where idcon=?";
 		try {
