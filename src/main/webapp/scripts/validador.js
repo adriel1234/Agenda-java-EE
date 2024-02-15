@@ -1,5 +1,6 @@
 /**
- *  validação de formulário
+ *  validação campos obrigatorios
+ * 
  * @author adriel Vinicius
  */
 

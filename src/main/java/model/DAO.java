@@ -157,11 +157,11 @@ public class DAO {
 	//editar contato
 	
 	public void alterarContato(JavaBeans contato) {
-		String create = "update contatos set nome=?,fone=?,email=? where idcon=?";
+		String update = "update contatos set nome=?,fone=?,email=? where idcon=?";
 		
 		try {
 			Connection con = conectar();
-			PreparedStatement pst = (PreparedStatement) con.prepareStatement(create);
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(update);
 			pst.setString(1, contato.getNome());
 			pst.setString(2, contato.getFone());
 			pst.setString(3, contato.getEmail());
@@ -190,18 +190,5 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
-
-	// teste conexao
-
-//	public void testeConexa() {
-//		try {
-//			Connection con = conectar();
-//			System.out.println(con);
-//			con.close();
-//		}catch (Exception e) {
-//			System.err.println(e.getMessage());
-//		}
-//		
-//	}
 
 }
